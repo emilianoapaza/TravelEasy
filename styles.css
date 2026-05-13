@@ -1,0 +1,563 @@
+:root {
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', sans-serif;
+
+    --primario: #000;
+    --blanco: #fff;
+    --negro: #000;
+}
+
+.mi-reserva {
+    margin-top: 4rem;
+    padding: 3rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 800px;
+    height: 400px;
+}
+
+.reserva-detalle {
+width: 800px;
+}
+
+.modal-registro {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-registro__contenido {
+    background-color: white;
+    width: 500px;
+    max-width: 90%;
+    height: 400px;
+    max-height: 90%;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-login {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-login__contenido {
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-login__contenido button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0055ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-reserva {
+    display: none; /* oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* fondo oscuro semitransparente */
+    z-index: 9999; /* por encima de todo */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-reserva__contenido {
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-reserva__contenido button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0055ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10px */
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    font-family: var(--fuenteParrafos);
+    font-size: 1.6rem;
+    line-height: 2;
+    position: relative;
+}
+.contenedor {
+    width: min(90%, 150rem);
+    margin: 0 auto;
+}
+.contenedor-small {
+    width: min(80%, 130rem);
+    margin: 0 auto;
+}
+.contenedor-nav {
+    width: 85%;
+    margin: 0 auto;
+}
+ul { padding: 0; }
+li { list-style: none; }
+a { text-decoration: none; }
+h1, h2, h3, h4 {
+    font-family: var(--fuenteHeading);
+    line-height: 1.5;
+}
+h1 { font-size: 4.8rem; }
+h2 { font-size: 4rem; }
+h3 { font-size: 3.2rem; }
+h4 { font-size: 2.8rem; }
+img { max-width: 100%; }
+
+
+.barra-bg{
+    background-color: var(--primario);
+}
+.barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between ;
+    height: 100%;
+}
+.logo {
+    color: var(--blanco);
+    font-weight: bold;
+    font-size: 2rem;
+}
+.barra__nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.barra__div {
+    text-align: center;
+    display: flex;
+}
+.barra a {
+    color: var(--blanco);
+    padding: 30px 20px;
+    display: inline-block;
+    position: relative;
+}
+.barra__before::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: var(--blanco);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+
+:is(.barra a:hover) .barra__before::after {
+    display: block;
+}
+
+/* ----- Carrusel de imagenes ----- */
+
+.slider-box {
+    overflow: hidden;
+    height: 50dvh;
+    position: relative;
+}
+.capa-black {
+    background-color: #0009;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+ul {
+    margin: 0;
+    display: flex;
+    width: 400%;
+    height: 100%;
+    animation: slide 25s infinite alternate ease-in-out;
+}
+li {
+    width: 70%;
+}
+.img1 {
+    background-image: url(img/nationalgeographic2709972.jpg);
+    height: 100%;
+    background-position: center -20dvh;
+}.img2 {
+    background-image: url(img/italia.webp);
+    height: 100%;
+    background-position: center;
+}.img3 {
+    background-image: url(img/islandia.jpg);
+    height: 100%;
+    background-position: center;
+}
+.img4 {
+    background-image: url(img/arenisca.webp);
+    height: 100%;
+    background-position: center;
+}
+
+@keyframes slide {
+    0% { margin-left: 0; }
+    20% { margin-left: 0; }
+
+    23% { margin-left: -100%; }
+    45% { margin-left: -100%; }
+    
+    48% { margin-left: -200%; }
+    70% { margin-left: -200%; }
+
+    73% { margin-left: -300%; }
+    100% { margin-left: -300%; }
+}
+/* ----- Reserva -----*/
+
+.border-reserva {
+    background-color: rgba(255, 255, 255, .35);
+    margin: -15rem auto 0;
+    width: 100%;
+    max-width: 120rem;
+    padding: 15px;
+    position: relative;
+}
+.reserva {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.reserva__nav {
+    display: flex;
+    width: 76.8rem;
+    gap: 4rem;
+}
+.nav-box div {
+    display: flex;
+    gap: 1rem;
+}
+.reserva__nav a{
+    color: var(--negro);
+    text-transform: uppercase;
+}
+.reserva__nav img {
+    width: 32px;
+}
+.nav-box {
+    position: relative;
+    padding: 1.5rem .2rem;
+}
+:is(.nav-box:hover ) .barra__before--black::after {
+    display: block;
+    background-color: var(--negro);
+}
+
+input[type="radio"] {
+    appearance: none;
+    border: 1px solid #000;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.section-option {
+    display: flex;
+    gap: 30px;
+}
+.container-option {
+    display: flex;
+    gap: 10px;
+}
+.section-option__option {
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+}
+.checked {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--negro);
+    position: absolute;
+    visibility: hidden;
+}
+
+input[type="radio"]:checked + .checked {
+    visibility: visible;
+}
+
+.flat {
+    width: 24px;
+    height: 38px;
+    position: relative;
+}
+.flat img:first-of-type {
+    position: absolute;
+    top: 0;
+}
+.flat img:last-of-type {
+    scale: -1;
+    position: absolute;
+    bottom: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1.5fr;
+    gap: 20px;
+}
+.grid-1,
+.grid-2,
+.grid-3 {
+    display: flex;
+}
+.grid-1 {
+    gap: 10px;
+    display: flex;
+    align-items: end;
+}
+.grid-2 {
+    gap: 20px;
+}
+
+.grid-1__div {
+    min-width: 200px;
+}
+.inputs-reserva {
+    padding: 12px 24px 12px 34px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    box-shadow: 0 1px 5px 1px #0006;
+}
+.inputs-reserva:focus {
+    outline: 1px solid #0006;
+}
+.inputs-reserva--select {
+    text-align: left;
+    padding: 12px 10px;
+}
+.flex-reserva {
+    display: flex;
+    align-items: center;
+}
+.flex-reserva img {
+    position: absolute;
+    margin: 5px;
+}
+.grid-button {
+    text-align: center;
+    padding: 20px;
+}
+.grid__button {
+    border: none;
+    padding: 15px 100px;
+    background-color: var(--primario);
+    color: var(--blanco);
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.grid__button:hover {
+    background-color: var(--blanco);
+    color: var(--negro);
+    outline: 2px solid #000;
+}
+.grid__button {
+    cursor: pointer;
+    background-color: var(--negro);
+    color: var(--blanco);
+}
+
+
+/* ----- Estado De Vuelo ----- */
+.grid-estadoDeVuelo {
+    display: flex;
+    margin: auto;
+}
+
+
+
+/* ----- Destinos ----- */
+main {
+    height: 100dvh;
+}
+.destinos {
+    display: flex;
+    gap: 10px;
+    height: 500px;
+}
+.destino-layout {
+    display: grid;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+}
+.img {
+    height: 100%;
+    object-fit: cover;
+    transition: scale .5s;
+}
+.tarifa {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--blanco);
+    transition: background-color .5s, color .5s;
+}
+.destinos__destino {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.tarifa h3 {
+    margin: 0;
+    font-size: 12px;
+}
+.tarifa div {
+    display: flex;
+    justify-content: space-between;
+}
+.tarifa div p{
+    flex-basis: calc(50% - 1rem);
+}
+.tarifa div p:first-of-type{
+    font-size: 14px;
+}
+.precio-final{
+    font-size: 2rem;
+    color: #37e;
+    margin: 0;
+}
+
+.destino-layout:hover .tarifa {
+    background-color: transparent;
+    color: var(--blanco);
+}
+.destino-layout:hover .precio-final {
+    color: var(--blanco);
+}
+
+.destino-layout:hover .img{
+    scale: 1.2;
+}
+
+
+/* ----- Sevicos -----*/
+
+/* ----- Rutas -----*/
+
+.button-map {
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* ----- Aerolineas Plus -----*/
+.span-premium {
+    font-weight: bold;
+}
+
+
+/* ----- Form Inicio de Sesion ----- */
+.h2-sesion {
+    text-align: center;
+}
+.form-sesion {
+    width: 600px;
+    margin: auto;
+    box-shadow: 0px 0px 10px 1px var(--negro);
+    padding: 10px;
+}
+.fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: none;
+}
+.fieldset__div {
+    width: 100%;
+}
+
+.fieldset__div input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #999;
+}
+.fieldset__div input:focus {
+    outline: none;
+}
+
+.fieldset__div input[type="submit"]{
+    background-color: #48e;
+    border: none;
+    color: var(--blanco);
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.registrarse {
+    margin: 30px;
+    width: 600px;
+    margin: 10px auto;
+}
